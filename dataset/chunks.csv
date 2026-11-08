@@ -1,0 +1,536 @@
+chunk_id,text
+1,"1 LECTURE 1 : INTRODUCTION TO MACHINE LEARNING 5
+1 Lecture 1 : Introduction to Machine Learning
+This lecture was an introduction to machine learning. ...2 LECTURE 2 6
+2 Lecture 2
+2.1 Solving Least Squares in General (for Linear models)
+Suppose you are given a series of observations: (x1,y 1), (x2,y 2),..., (xn,yn)Xplot = [0, 0.1,..., 2]Curve
+ Why noise ?
+– Since observations are not perfect
+– Owing to quantization / precision / rounding
+Curve Fitting"
+2,"– Since observations are not perfect
+– Owing to quantization / precision / rounding
+Curve Fitting
+Learn f : X→ Y such that E(f,X,Y 1) is minimized. Here the error function E and form of the
+function to learn f is chosen by the modeler.
+Consider one such form of f,
+f(x) =w0 +w1x +w2x2 +... +wtxt
+The sum of squares error is given by,
+E = 1 2
+m∑
+i=1
+(f(xi)−yi)2
+So the expression is,
+argmin
+w=[w1,w2,...wt]
+1
+2
+K∑
+i=1
+[(w0 +w1x +w2x2 +... +wtxt)−y1(i)]2"
+3,"So the expression is,
+argmin
+w=[w1,w2,...wt]
+1
+2
+K∑
+i=1
+[(w0 +w1x +w2x2 +... +wtxt)−y1(i)]2
+If there are m data points, then a polynomial of degree m− 1 can exactly ﬁt the data, since the
+polynomial has m degrees of freedom (where degrees of freedom=no. of coeﬃcients)
+As the degree of the polynomial increases beyond m, the curve becomes more and more wobbly,
+while still passing through the points. Contrast the degree 10 ﬁt in Figure 2.1 against the degree 5"
+4,"ﬁt in Figure 2.1. This is due to the problem of overﬁtting (overspeciﬁcation)
+Now E is a convex function. To optimize it, we need to set ∇wE = 0. The ∇ operator is also
+called gradient.
+Solution is given by,
+X = (φtφ)−1φtY
+If m<<t then
+ φ becomes singular and the solution cannot be found OR
+ The column vectors in φ become nearly linearly dependent
+RMS (root mean sqare) error is given by :
+RMS =
+√
+2E
+k2 LECTURE 2 7
+Figure 1: Fit for degree 5 polynomial."
+5,"RMS =
+√
+2E
+k2 LECTURE 2 7
+Figure 1: Fit for degree 5 polynomial.
+Generally, some test data (which potentially could have been part of the training data) is held
+out for evaluating the generalized performance of the model. Another held out fraction of the
+training data, called the validation dataset is typically used to ﬁnd the most appropriate degree
+tbest for f.2 LECTURE 2 8
+Figure 2: Fit for degree 10 polynomial. Note how wobbly this ﬁt is.3 LECTURE 3 : REGRESSION 9
+3 Lecture 3 : Regression"
+6,"3 Lecture 3 : Regression
+This lecture was about regression. It started with formally deﬁning a regression problem. Then a
+simple regression model called linear regression was discussed. Diﬀerent methods for learning the
+parameters in the model were next discussed. It also covered least square solution for the problem
+and its geometrical interpretation.
+3.1 Regression
+Suppose there are two sets of variables x∈ℜ n and y∈ℜ k such that x is independent and y"
+7,"Suppose there are two sets of variables x∈ℜ n and y∈ℜ k such that x is independent and y
+is dependant. The regression problem is concerned with determining y in terms of x. Let us
+assume that we are given m data pointsD =⟨x1, y1⟩,⟨x2, y2⟩,..,⟨xm, ym⟩. Then the problem is
+to determine a function f∗ such that f∗(x) is the best predictor for y, with respect toD. Suppose
+ε(f,D) is an error function, designed to reﬂect the discrepancy between the predicted value f(x′)"
+8,"ε(f,D) is an error function, designed to reﬂect the discrepancy between the predicted value f(x′)
+of y′ and the actual value y′ for any⟨x′, y′⟩∈D , then
+f∗ = argmin
+f∈F
+ε(f,D) (1)
+where,F denotes the class of functions over which the optimization is performed.
+3.2 Linear regression
+Depending on the function class we consider, there are many types of regression problems. In Linear
+regression we consider only linear functions, functions that are linear in the basis function. Here"
+9,"regression we consider only linear functions, functions that are linear in the basis function. Here
+F is of the form {∑p i=1wiφi(x)}. φi : Rn→ Rk Here, the φi’s are called the basis functions (for
+example, we can consider φi(x) =xi, i.e., polynomial basis functions) .
+Any function in F is characterized by its parameters, the wi’s. Thus, in (1) we have to ﬁnd
+f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution"
+10,"f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the loss function . The squared loss is a commonly used loss
+function. It is the sum of squares of the diﬀerences between the actual value and the predicted
+value.
+ε(f,D) =
+∑
+⟨xi,yi⟩∈D
+(f(xi)−yi)2
+So the least square solution for linear regression is given by
+w∗ = argmin
+w
+m∑
+j=1
+( p∑
+i=1
+(wiφi(xj)−yj
+)2"
+11,"w∗ = argmin
+w
+m∑
+j=1
+( p∑
+i=1
+(wiφi(xj)−yj
+)2
+The minimum value of the squared loss is zero. Is it possible to achieve this value ? In other
+words is∀j,
+p∑
+i=1
+wiφi(xj) =yj possible ?3 LECTURE 3 : REGRESSION 10
+C(φ)
+ˆy
+y
+Figure 3: Least square solution ˆy is the orthogonal projection of y onto column space of φ
+The above equality can be written as ∀u, φT (xu)w =yu
+or equivalentlyφw = y where
+φ =
+
+
+φ1(x1) ··· φp(x1)
+... ... ...
+φ1(xm) ··· φp(xm)
+
+ and y =
+
+
+y1
+...
+ym
+
+"
+12,"φ =
+
+
+φ1(x1) ··· φp(x1)
+... ... ...
+φ1(xm) ··· φp(xm)
+
+ and y =
+
+
+y1
+...
+ym
+
+
+It has a solution if y is in the column space (the subspace of Rn formed by the column vectors)
+of φ. It is possible that there exists no w which satisﬁes the conditions? In such situations we can
+solve the least square problem.
+3.4 Geometrical interpretation of least squares
+Let ˆy be a solution in the column space of φ. The least squares solution is such that the distance"
+13,"Let ˆy be a solution in the column space of φ. The least squares solution is such that the distance
+between ˆy and y is minimized. From the diagram it is clear that for the distance to be minimized,
+the line joining ˆy to y should be orthogonal to the column space. This can be summarized as
+1. φw = ˆy
+2. ∀v∈{ 1,..p}, (y− ˆy)Tφv = 0 or ( ˆy− y)Tφ = 0
+ˆyTφ = yTφ
+ie, (φw)Tφ = yTφ
+ie, wTφTφ = yTφ
+ie, φTφw =φTy
+∴ w = (φTφ)−1y"
+14,"ˆyTφ = yTφ
+ie, (φw)Tφ = yTφ
+ie, wTφTφ = yTφ
+ie, φTφw =φTy
+∴ w = (φTφ)−1y
+In the last step, please note that, φTφ is invertible only if φ has full column rank.3 LECTURE 3 : REGRESSION 11
+Theorem: If φ has full column rank, φTφ is invertible. A matrix is said to have full column rank
+if all its column vectors are linearly independent. A set of vectors vi is said to be linearly
+independent if ∑ iαivi = 0⇒αi = 0."
+15,"independent if ∑ iαivi = 0⇒αi = 0.
+Proof: Given that φ has full column rank and hence columns are linearly independent, we have
+that φx = 0⇒ x = 0.
+Assume on the contrary that φTφ is non invertible. Then ∃x⁄= 0∋φTφx = 0.
+⇒ xTφTφx = 0
+⇒ (φx)Tφx =||φx||2 = 0
+⇒φx = 0. This is a contradiction. Hence the theorem is proved.4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 12
+4 Lecture 4 : Least Squares Linear Regression"
+16,"4 Lecture 4 : Least Squares Linear Regression
+In this lecture we discussed how to minimize the error function ε(w,D) that we used for the
+least square linear regression model in the last lecture. To do this, some basic concepts regarding
+minimization of a function were discussed and we applied these to our error function.
+4.1 Least Square Linear Regression Model
+In the least squares regression model, we determine the value of w for which our error function ε"
+17,"In the least squares regression model, we determine the value of w for which our error function ε
+attains the minimum value. Here, D =< x1,y 1 >,< x2,y 2 >,..,< xm,ym > is the training data
+set, and φi’s are the basis functions.
+w∗ = argmin
+w
+{ m∑
+j=1
+(f (xj, w)−yj)2
+}
+= argmin
+w
+{ m∑
+j=1
+( p∑
+i=1
+wiφi(xj)−yj
+)2}
+φ =
+
+ φ1(x1) φ2(x1) ...... φ p(x1) . .
+φ1(xm) φ2(xm) ...... φ p(xm)
+
+
+y =
+
+
+y1
+y2
+.
+.
+ym
+
+
+w =
+
+
+w1
+w2
+.
+.
+wp
+
+
+ε = min
+w
+m∑
+j=1
+("
+18,"
+y =
+
+
+y1
+y2
+.
+.
+ym
+
+
+w =
+
+
+w1
+w2
+.
+.
+wp
+
+
+ε = min
+w
+m∑
+j=1
+(
+φT (xj)w−yj )2
+= min
+w
+||φw− y||2
+= min
+w
+(φw− y)T (φw− y)
+= min
+w
+(
+wTφTφw− 2yTφw + yTy ) (2)4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 13
+How to minimize a function?
+Following are some basic concepts which help in minimizing or maximizing a function:
+4.2 Level Curves and Surfaces
+A level curve of a function f(x) is deﬁned as a curve along which the value of the function remains"
+19,"A level curve of a function f(x) is deﬁned as a curve along which the value of the function remains
+unchanged while we change the value of it’s argument x. Note that there can be as many level
+curves for any function as the number of diﬀerent values it can attain.
+Figure 4: 10 level curves for the function f(x1,x 2) =x1ex 2 (Figure 4.12 from [1])
+Level surfaces are similarly deﬁned for any n-dimensional function f(x1,x 2,...,x n) as a collection"
+20,"of points in the argument space on which the value of the function is same at all points while we
+change the argument values.
+Formally we can deﬁne a level curve as :
+Lc(f) =
+{
+x|f(x) =c
+}
+where c is a constant.
+Refer to Fig. 4.15 in class notes [1] for example.4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 14
+Figure 5: 3 level surfaces for the function f(x1,x 2,x 3) =x2 1 +x2 2 +x2 3 withc = 1, 3, 5. The gradient"
+21,"at (1, 1, 1) is orthogonal to the level surface f(x1,x 2,x 3) =x2 1 +x2 2 +x2 3 = 3 at (1, 1, 1) (Fig. 4.14
+from [1]).
+4.3 Gradient Vector
+The gradient vector of a function f at a point x is deﬁned as follows:
+∇fx∗ =
+
+
+∂f (x)
+∂x1
+∂f (x)
+∂x2
+.
+.
+∂f (x)
+∂xn
+
+ ϵRn
+The direction of the gradient vector gives the direction of maximum rate of change of the value of
+the function at a point. Also the magnitude of the gradient vector gives that maximum value of
+rate of change."
+22,"rate of change.
+Refer to Deﬁnition 23 in the class notes [1] for more details.
+4.4 Directional Derivative
+Directional Derivative gives the rate of change of the function value in a given direction at a point.
+The directional derivative of a function f in the direction of a unit vector v at a point x can be
+deﬁned as :
+Dv(f) = lim h→0
+f(x +hv)−f(x)
+h
+||v|| = 1
+Note: The maximum value of directional derivative of a function f at any point is always the"
+23,"Note: The maximum value of directional derivative of a function f at any point is always the
+magnitude of it’s gradient vector at that point.4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 15
+Figure 6: The level curves from Figure 4 along with the gradient vector at (2, 0). Note that the
+gradient vector is perpenducular to the level curve x1ex2 = 2 at (2, 0) (Figure 4.13 from [1])
+Refer to Deﬁnition 22 and Theorem 58 in the class notes [1] for more details.
+4.5 Hyperplane"
+24,"Refer to Deﬁnition 22 and Theorem 58 in the class notes [1] for more details.
+4.5 Hyperplane
+A Hyperplane is a set of points whose direction w.r.t. a point p is orthogonal to a vector v. It can
+be formally deﬁned as :
+Hv,p =
+{
+q| (p− q)Tv = 0
+}
+4.6 Tangential Hyperplane
+There are two deﬁnitions of tangential hyperplane (TH x∗) to level surface (Lf(x∗)(f)) of f at x∗ :
+1. Plane consisting of all tangent lines at x∗ to any parametric curve c(t) on level surface."
+25,"1. Plane consisting of all tangent lines at x∗ to any parametric curve c(t) on level surface.
+2. Plane orthogonal to the gradient vector at x∗.
+TH x∗ =
+{
+p| (p− x∗)T∇f(x∗) = 0
+}
+Note: By deﬁnition, TH x∗ is n− 1 dimensional.
+Refer to Deﬁnition 24 and Theorem 59 in class notes [1] for more details.
+4.7 Gradient Descent Algorithm
+Gradient Descent Algorithm is used to ﬁnd minimum value attained by a real valued functionf(x)."
+26,"Gradient Descent Algorithm is used to ﬁnd minimum value attained by a real valued functionf(x).
+We ﬁrst start at an intial point x(0) and make a sequence of steps proportional to negative of
+gradient of the function at the point. Finally we stop at a point x(∗) where a desired convergence4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 16
+criterion (see notes on Convex Optimization) will be attained.
+The idea of gradient descent algorithm is based on the fact that if a real-valued function f(x) is"
+27,"The idea of gradient descent algorithm is based on the fact that if a real-valued function f(x) is
+deﬁned and diﬀerentiable at a point xk, thenf(x) decreases fastest when you move in the direction
+of the negative gradient of the function at that point, which is −∇f(x).
+Here we describe the method of Gradient Descent Algorithm to ﬁnd the parameter vector w
+which minimizes the error function, ε(w,D)
+∆w(k) = −∇ ε(w(k)) from equation (2)
+= −∇(wTφTφw− 2yTφw + yTy)
+= −(2φTφw− 2yTφ + 0)
+= 2( φTy−φTφw)"
+28,"∆w(k) = −∇ ε(w(k)) from equation (2)
+= −∇(wTφTφw− 2yTφw + yTy)
+= −(2φTφw− 2yTφ + 0)
+= 2( φTy−φTφw)
+so we got
+w(k+1) = w(k) + 2t(k)(φTy−φTφw(k))
+Gradient Descent Algorithm :
+Find starting point w(0)ϵD
+repeat
+1. ∆ wk =−∇ε(w(k))
+2. Choose a step size t(k) > 0 using exact or backtracking ray search.
+3. Obtain w(k+1) = w(k) +t(k)∆w(k).
+4. Set k =k + 1.
+until stopping criterion (such as ∇ε(x(k+1)) ≤ϵ) is satisﬁed
+Exact Line Search Algorithm :
+t(k) = argmin
+t
+ε
+(
+w(k) + 2t ( φTy−φTφw(k) ))"
+29,"Exact Line Search Algorithm :
+t(k) = argmin
+t
+ε
+(
+w(k) + 2t ( φTy−φTφw(k) ))
+In general
+t(k) = argmin
+t
+f
+(
+w(k+1)
+)
+Refer to section 4.5.1 in the class notes [1] for more details.
+4.8 Local Minimum and Local Maximum
+Critical Point : x is a called a critical point w.r.t to a function f, if∇f(x) = 0 i.e. the gradient
+vanishes at x or the gradient fails to exist at x.
+Local Minimum (or Maximum):4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 17"
+30,"Local Minimum (or Maximum):4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 17
+If∇f(x∗) = 0 then x∗ can be a point of local minimum (or maximum). [ Neccessary Condi-
+tion]
+If∇2f(x∗) is positive (negative) deﬁnite then x∗ is a point of local minimum (maximum). [ Suﬃ-
+cient Condition ]
+Note:∇2f(x∗) is positive deﬁnite means :
+∀x⁄= 0 x T∇2f(x∗)x> 0
+OR
+λi(∇2f(x∗))> 0
+i.e. matrix eigen values are positive.
+Refer to deﬁnition 27, theorem 61 and ﬁg. 4.23, 4.24 in the class notes [1] for more details."
+31,"Refer to deﬁnition 27, theorem 61 and ﬁg. 4.23, 4.24 in the class notes [1] for more details.
+Figure 7: Plot of f(x1,x 2) = 3x2 1−x3 1− 2x2 2 +x4 2 , showing the various local maxima and minima
+of the function (ﬁg. 4.16 from [1])5 LECTURE 5 : CONVEX FUNCTIONS 18
+5 Lecture 5 : Convex functions
+In this lecture the concepts of convex sets and functions were introduced.
+5.1 Recap
+We recall that the problem was to ﬁnd w such that
+w∗ = argmin
+w
+||φw− y||2 (3)
+= argmin w(wTφTφw− 2wTφy− yTy) (4)"
+32,"w∗ = argmin
+w
+||φw− y||2 (3)
+= argmin w(wTφTφw− 2wTφy− yTy) (4)
+5.2 Point 1
+If∇f(x∗) is deﬁned & x∗ is local minimum/maximum, then ∇f(x∗) = 0
+(A necessary condition) (Cite : Theorem 60)[2]
+Given that
+f(w) = argmin
+w
+(wTφTφw− 2wTφy− yTy) (5)
+=⇒ ∇f(w) = 2 φTφw− 2φTy (6)
+we would have
+∇f(w∗) = 0 (7)
+=⇒ 2φTφw∗− 2φTy = 0 (8)
+=⇒ w∗ = ( φTφ)−1φTy (9)
+5.3 Point 2
+Is∇2f(w∗) positive deﬁnite ?
+i.e.∀x⁄= 0, is xT∇f(w∗)x> 0? (A suﬃcient condition for local minimum)"
+33,"Is∇2f(w∗) positive deﬁnite ?
+i.e.∀x⁄= 0, is xT∇f(w∗)x> 0? (A suﬃcient condition for local minimum)
+(Note : Any positive deﬁnite matrix is also positive semi-deﬁnite)
+(Cite : Section 3.12 & 3.12.1)[3]
+∇2f(w∗) = 2 φTφ (10)
+=⇒ xT∇2f(w∗)x = 2 xTφTφx (11)
+= 2( φx)Tφx (12)
+= 2 ||φx||2≥ 0 (13)
+And if φ has full column rank ,
+φx = 0 iff x = 0 (14)5 LECTURE 5 : CONVEX FUNCTIONS 19
+∴ If x⁄= 0, xT∇2f(w∗)x> 0
+Example where φ doesn’t have a full column rank,
+φ =
+
+
+x1 x2 1 x2 1 x3 1
+x2 x2 2 x2 2 x3 2"
+34,"Example where φ doesn’t have a full column rank,
+φ =
+
+
+x1 x2 1 x2 1 x3 1
+x2 x2 2 x2 2 x3 2
+... ... ... ...
+xn x2 n x2 n x3 n
+
+ (15)
+This is the simplest form of linear correlation of features, and it is not at all desirable.
+5.4 Point 3
+Deﬁnition of convex sets and convex functions (Cite : Definition 32 and 35)[2]
+Figure 8: A sample convex function
+∴f(θx + (1−θ)y)≤θf(x) + (1−θ)f(y) (16)
+Some convex functions : (Cite : Table 4.1, pg-54)[2]"
+35,"∴f(θx + (1−θ)y)≤θf(x) + (1−θ)f(y) (16)
+Some convex functions : (Cite : Table 4.1, pg-54)[2]
+To prove : Verify that a hyperplane is a convex set.
+Proof :5 LECTURE 5 : CONVEX FUNCTIONS 20
+A Hyperplane H is deﬁned as {x|aTx = b, a⁄= 0}. Let x and y be vectors that belong to the
+hyperplane. Since they belong to the hyperplane, aTx = b andaTy = b. In order to prove the
+convexity of the set we must show that :
+θx + (1−θ)y∈H, where θ∈ [0, 1] (17)"
+36,"convexity of the set we must show that :
+θx + (1−θ)y∈H, where θ∈ [0, 1] (17)
+In particular, it will belong to the hyperplane if it’s true that :
+aT (θx + (1−θ)y) = b (18)
+=⇒ aTθx + aT (1−θ)y = b (19)
+=⇒ θaTx + (1−θ)aTy = b (20)
+(21)
+And, we also have aTx =b andaTy =b. Hence θb + (1−θ)b =b. [Hence Proved]
+So a hyperplane is a convex set.
+Q. Is||φw− y||2 convex?
+A. To check this, we have (Cite : Theorem 75)[2] but it is not very practical. We would use"
+37,"A. To check this, we have (Cite : Theorem 75)[2] but it is not very practical. We would use
+(Cite : Theorem 79)[2] to check for the convexity of our function. So the condition that has
+our focus is -
+∇2f(w∗) is positive semi−definite, if∀x⁄= 0, xT∇2f(w∗)x≥ 0 (22)
+We have,
+∇2f(w) = 2φTφ (23)
+So,||φw− y||2 is convex, since the domain for w is Rn and is convex.
+Q. Is||φw− y||2 strictly convex?
+A. Iﬀ φ has full column rank.
+(Side note : Weka 1)
+5.5 Point 4"
+38,"Q. Is||φw− y||2 strictly convex?
+A. Iﬀ φ has full column rank.
+(Side note : Weka 1)
+5.5 Point 4
+To prove: If a function is convex, any point of local minima ≡ point of global minima
+Proof - (Cite : Theorem 69)[2]
+To prove : If a function is strictly convex, it has a unique point of global minima
+Proof - (Cite : Theorem 70)[2]
+Since||φw− y||2 is strictly convex for linearly independent φ,
+∇f(w∗) = 0 for w∗ = (φTφ)−1φTy (24)
+1http://www.cs.waikato.ac.nz/ml/weka/"

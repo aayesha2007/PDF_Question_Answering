@@ -1,0 +1,233 @@
+query_id,question,answer,semantic_top5,semantic_distances,keyword_top5
+1,What is machine learning?,"The context does not provide a direct answer to the question ""What is machine learning?"" However, it does provide information about a lecture on Introduction to Machine Learning, which suggests that machine learning is a topic of study in this lecture.","--- Page 1 ---
+1 LECTURE 1 : INTRODUCTION TO MACHINE LEARNING 5
+1 Lecture 1 : Introduction to Machine Learning
+This lecture was an introduction to machine learning. ... | --- Page 5 ---
+3 LECTURE 3 : REGRESSION 9
+3 Lecture 3 : Regression
+This lecture was about regression. It started with formally deﬁning a regression problem. Then a
+simple regression model called linea | function to learn f is chosen by the modeler.
+Consider one such form of f,
+f(x) =w0 +w1x +w2x2 +... +wtxt
+The sum of squares error is given by,
+E = 1 2
+m∑
+i=1
+(f(xi)−yi)2
+So the expression is,
+argmin
+ | f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the lo | --- Page 12 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 16
+criterion (see notes on Convex Optimization) will be attained.
+The idea of gradient descent algorithm is based on the fact that if a re",0.8496 | 1.3179 | 1.4262 | 1.4428 | 1.4965,"
+It has a solution if y is in the column space (the subspace of Rn formed by the column vectors)
+of φ. It is possible that there exists no w which satisﬁes the conditions? In such situations we can | our focus is -
+∇2f(w∗) is positive semi−definite, if∀x⁄= 0, xT∇2f(w∗)x≥ 0 (22)
+We have,
+∇2f(w) = 2φTφ (23)
+So,||φw− y||2 is convex, since the domain for w is Rn and is convex.
+Q. Is||φw− y||2 strictly | aT (θx + (1−θ)y) = b (18)
+=⇒ aTθx + aT (1−θ)y = b (19)
+=⇒ θaTx + (1−θ)aTy = b (20)
+(21)
+And, we also have aTx =b andaTy =b. Hence θb + (1−θ)b =b. [Hence Proved]
+So a hyperplane is a convex set.
+Q. Is| | polynomial has m degrees of freedom (where degrees of freedom=no. of coeﬃcients)
+As the degree of the polynomial increases beyond m, the curve becomes more and more wobbly,
+while still passing through | and its geometrical interpretation.
+3.1 Regression
+Suppose there are two sets of variables x∈ℜ n and y∈ℜ k such that x is independent and y
+is dependant. The regression problem is concerned with deter"
+2,What is linear regression?,"According to the context, linear regression is a type of regression problem where the function class F is considered to be linear functions, functions that are linear in the basis function.","--- Page 5 ---
+3 LECTURE 3 : REGRESSION 9
+3 Lecture 3 : Regression
+This lecture was about regression. It started with formally deﬁning a regression problem. Then a
+simple regression model called linea | --- Page 8 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 12
+4 Lecture 4 : Least Squares Linear Regression
+In this lecture we discussed how to minimize the error function ε(w,D) that we used for th | Depending on the function class we consider, there are many types of regression problems. In Linear
+regression we consider only linear functions, functions that are linear in the basis function. Here
+ | to determine a function f∗ such that f∗(x) is the best predictor for y, with respect toD. Suppose
+ε(f,D) is an error function, designed to reﬂect the discrepancy between the predicted value f(x′)
+of y | --- Page 9 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 13
+How to minimize a function?
+Following are some basic concepts which help in minimizing or maximizing a function:
+4.2 Level Curves and Su",0.6037 | 0.993 | 1.0025 | 1.0647 | 1.0882,"
+It has a solution if y is in the column space (the subspace of Rn formed by the column vectors)
+of φ. It is possible that there exists no w which satisﬁes the conditions? In such situations we can | Depending on the function class we consider, there are many types of regression problems. In Linear
+regression we consider only linear functions, functions that are linear in the basis function. Here
+ | --- Page 8 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 12
+4 Lecture 4 : Least Squares Linear Regression
+In this lecture we discussed how to minimize the error function ε(w,D) that we used for th | our focus is -
+∇2f(w∗) is positive semi−definite, if∀x⁄= 0, xT∇2f(w∗)x≥ 0 (22)
+We have,
+∇2f(w) = 2φTφ (23)
+So,||φw− y||2 is convex, since the domain for w is Rn and is convex.
+Q. Is||φw− y||2 strictly | --- Page 7 ---
+3 LECTURE 3 : REGRESSION 11
+Theorem: If φ has full column rank, φTφ is invertible. A matrix is said to have full column rank
+if all its column vectors are linearly independent. A set of"
+3,Explain the least squares method.,"The least squares method is a technique used to find the best-fitting linear regression model by minimizing the error function ε(w,D). The error function is the sum of squares of the differences between the actual values and the predicted values.
+
+The least squares solution is given by the equation:
+
+w∗ = argmin w m∑ j=1 ( p∑ i=1 (wiφi(xj) - yj)2 )
+
+This equation represents the parameter vector w that minimizes the error function ε(w,D). The parameter vector w is the vector of coefficients that best fits the linear regression model.
+
+The least squares method is based on the idea that the error function decreases fastest when the parameter vector w is moved in the direction of the negative gradient of the function at that point. This is achieved using the gradient descent algorithm, which iteratively updates the parameter vector w to minimize the error function.
+
+The least squares method is also related to the concept of orthogonal projection, where the least squares solution ˆy is the orthogonal projection of y onto the column space of φ. This means that the least squares solution is the best linear approximation of y in the direction of the column space of φ.","--- Page 8 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 12
+4 Lecture 4 : Least Squares Linear Regression
+In this lecture we discussed how to minimize the error function ε(w,D) that we used for th | --- Page 5 ---
+3 LECTURE 3 : REGRESSION 9
+3 Lecture 3 : Regression
+This lecture was about regression. It started with formally deﬁning a regression problem. Then a
+simple regression model called linea | --- Page 6 ---
+3 LECTURE 3 : REGRESSION 10
+C(φ)
+ˆy
+y
+Figure 3: Least square solution ˆy is the orthogonal projection of y onto column space of φ
+The above equality can be written as ∀u, φT (xu)w =yu
+o | f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the lo | --- Page 12 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 16
+criterion (see notes on Convex Optimization) will be attained.
+The idea of gradient descent algorithm is based on the fact that if a re",0.7058 | 0.7803 | 0.8043 | 0.8087 | 0.888,"
+It has a solution if y is in the column space (the subspace of Rn formed by the column vectors)
+of φ. It is possible that there exists no w which satisﬁes the conditions? In such situations we can | f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the lo | --- Page 8 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 12
+4 Lecture 4 : Least Squares Linear Regression
+In this lecture we discussed how to minimize the error function ε(w,D) that we used for th | ∇fx∗ =
+
+
+∂f (x)
+∂x1
+∂f (x)
+∂x2
+.
+.
+∂f (x)
+∂xn
+
+ ϵRn
+The direction of the gradient vector gives the direction of maximum rate of change of the value of
+the function at a point. Also the | --- Page 12 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 16
+criterion (see notes on Convex Optimization) will be attained.
+The idea of gradient descent algorithm is based on the fact that if a re"
+4,What is gradient descent?,Gradient Descent is an algorithm used to find the minimum value of a real-valued function f(x) by making a sequence of steps proportional to the negative of the gradient of the function at the point.,"Refer to Deﬁnition 24 and Theorem 59 in class notes [1] for more details.
+4.7 Gradient Descent Algorithm
+Gradient Descent Algorithm is used to ﬁnd minimum value attained by a real valued functionf(x). | --- Page 12 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 16
+criterion (see notes on Convex Optimization) will be attained.
+The idea of gradient descent algorithm is based on the fact that if a re | ∇fx∗ =
+
+
+∂f (x)
+∂x1
+∂f (x)
+∂x2
+.
+.
+∂f (x)
+∂xn
+
+ ϵRn
+The direction of the gradient vector gives the direction of maximum rate of change of the value of
+the function at a point. Also the | Here we describe the method of Gradient Descent Algorithm to ﬁnd the parameter vector w
+which minimizes the error function, ε(w,D)
+∆w(k) = −∇ ε(w(k)) from equation (2)
+= −∇(wTφTφw− 2yTφw + yTy)
+= −(2φ | f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the lo",0.7895 | 0.8353 | 0.9521 | 1.0004 | 1.1309,"
+It has a solution if y is in the column space (the subspace of Rn formed by the column vectors)
+of φ. It is possible that there exists no w which satisﬁes the conditions? In such situations we can | our focus is -
+∇2f(w∗) is positive semi−definite, if∀x⁄= 0, xT∇2f(w∗)x≥ 0 (22)
+We have,
+∇2f(w) = 2φTφ (23)
+So,||φw− y||2 is convex, since the domain for w is Rn and is convex.
+Q. Is||φw− y||2 strictly | 3. Obtain w(k+1) = w(k) +t(k)∆w(k).
+4. Set k =k + 1.
+until stopping criterion (such as ∇ε(x(k+1)) ≤ϵ) is satisﬁed
+Exact Line Search Algorithm :
+t(k) = argmin
+t
+ε
+(
+w(k) + 2t ( φTy−φTφw(k) ))
+In gene | polynomial has m degrees of freedom (where degrees of freedom=no. of coeﬃcients)
+As the degree of the polynomial increases beyond m, the curve becomes more and more wobbly,
+while still passing through | --- Page 12 ---
+4 LECTURE 4 : LEAST SQUARES LINEAR REGRESSION 16
+criterion (see notes on Convex Optimization) will be attained.
+The idea of gradient descent algorithm is based on the fact that if a re"
+5,What is the bias-variance tradeoff?,"The bias-variance tradeoff is not explicitly mentioned in the provided context. However, it is implied in the discussion about the degree of a polynomial and the concept of overfitting.
+
+In the context, it is mentioned that as the degree of the polynomial increases beyond the number of data points (m), the curve becomes more wobbly, indicating overfitting. This suggests that there is a tradeoff between the bias (the tendency of the model to favor one class of data over others) and the variance (the amount of variation in the model's predictions).
+
+The bias-variance tradeoff is a fundamental concept in machine learning, suggesting that a model with too much bias (i.e., too simple) will not capture the underlying patterns in the data, while a model with too much variance (i.e., too complex) will overfit the data and not generalize well. The optimal model will have a balance between bias and variance, which is achieved by selecting the right degree of the polynomial or the number of basis functions.","--- Page 15 ---
+5 LECTURE 5 : CONVEX FUNCTIONS 19
+∴ If x⁄= 0, xT∇2f(w∗)x> 0
+Example where φ doesn’t have a full column rank,
+φ =
+
+
+x1 x2 1 x2 1 x3 1
+x2 x2 2 x2 2 x3 2
+... ... ... ...
+xn x2 n x2  | polynomial has m degrees of freedom (where degrees of freedom=no. of coeﬃcients)
+As the degree of the polynomial increases beyond m, the curve becomes more and more wobbly,
+while still passing through | f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the lo | --- Page 2 ---
+2 LECTURE 2 6
+2 Lecture 2
+2.1 Solving Least Squares in General (for Linear models)
+Suppose you are given a series of observations: (x1,y 1), (x2,y 2),..., (xn,yn)Xplot = [0, 0.1,..., 2] | 4.1 Least Square Linear Regression Model
+In the least squares regression model, we determine the value of w for which our error function ε
+attains the minimum value. Here, D =< x1,y 1 >,< x2,y 2 >,..,",1.4551 | 1.4992 | 1.5013 | 1.507 | 1.5101,"
+It has a solution if y is in the column space (the subspace of Rn formed by the column vectors)
+of φ. It is possible that there exists no w which satisﬁes the conditions? In such situations we can | f(w∗) where
+w∗ = argmin
+w
+ε(w,D)
+3.3 Least square solution
+The error functionε plays a major role in the accuracy and tractability of the optimization problem.
+The error function is also called the lo | polynomial has m degrees of freedom (where degrees of freedom=no. of coeﬃcients)
+As the degree of the polynomial increases beyond m, the curve becomes more and more wobbly,
+while still passing through | to determine a function f∗ such that f∗(x) is the best predictor for y, with respect toD. Suppose
+ε(f,D) is an error function, designed to reﬂect the discrepancy between the predicted value f(x′)
+of y | Depending on the function class we consider, there are many types of regression problems. In Linear
+regression we consider only linear functions, functions that are linear in the basis function. Here
+"
